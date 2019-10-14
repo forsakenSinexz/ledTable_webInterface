@@ -1,0 +1,58 @@
+body {
+  background-color: rgb(43, 43, 43);
+}
+
+.printButton {
+  background-color: white;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+section {
+  display: -webkit-flex;
+  display: flex;
+}
+
+.content {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding: 20px;
+}
+
+.picker {
+  -webkit-box-flex: 3;
+  -ms-flex: 3;
+  flex: 3;
+  padding: 0;
+}
+
+footer {
+  padding: 10px;
+  text-align: center;
+}
+
+.wrap .half {
+  width: 45%;
+  padding: 16px 0;
+}
+
+.title {
+  font-family: sans-serif;
+  line-height: 24px;
+  display: block;
+  padding: 8px 0;
+}
+
+.readout {
+  margin-top: 32px;
+  line-height: 180%;
+}
+
+#values {
+  font-family: monospace;
+  line-height: 150%;
+}
