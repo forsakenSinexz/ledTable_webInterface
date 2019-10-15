@@ -7,6 +7,11 @@ var pickedRGBColorRight = null;
 var dragClickButton = null;
 var isMouseDown;
 
+var socket = io();
+socket.on('connect', function() {
+    socket.emit('testmessage', {data: 'I\'m connected!'});
+});
+
 document.addEventListener('mousedown', event => isMouseDown = true);
 document.addEventListener('mouseup', event => isMouseDown = false);
 document.addEventListener('contextmenu', event => event.preventDefault());
@@ -15,6 +20,7 @@ function mouseOnPixelEventHanlder(event, pixel){
   dragClickButton = event.button;
   if(event.button == 0){ //left mouse button
     pixel.style.backgroundColor = 'rgb(' + pickedRGBColorLeft[0] + ',' + pickedRGBColorLeft[1] + ',' + pickedRGBColorLeft[2] + ')';
+    socket.emit('pixel_colored_event', {y: 5, x: 5, g: pickedRGBWColorLeft[1], r: pickedRGBWColorLeft[0], b: pickedRGBWColorLeft[2], w: pickedRGBWColorLeft[3]});
   }
   else if(event.button == 1){ //middle mouse button
     
@@ -38,6 +44,7 @@ function pixelDragOverHandler(pixel){
   if(isMouseDown){
     if(dragClickButton == 0){ //left mouse button
       pixel.style.backgroundColor = 'rgb(' + pickedRGBColorLeft[0] + ',' + pickedRGBColorLeft[1] + ',' + pickedRGBColorLeft[2] + ')';
+      socket.emit('pixel_colored_event', {y: 5, x: 5, g: pickedRGBWColorLeft[1], r: pickedRGBWColorLeft[0], b: pickedRGBWColorLeft[2], w: pickedRGBWColorLeft[3]});
     }
     else if(dragClickButton == 1){ //middle mouse button
       
