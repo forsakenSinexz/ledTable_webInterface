@@ -2,7 +2,7 @@ from flask import Flask, render_template
 from flask_socketio import SocketIO
 
 
-# . venv/bin/activate
+# venv\Scripts\activate
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secreto!'
@@ -26,7 +26,13 @@ def handle_pixel_colored(message):
     r = message['r']
     b = message['b']
     w = message['w']
+    #TODO: insert into table python script!
     print('pixel [{},{}] was colored: [{},{},{},{}]'.format(y,x,r,g,b,w))
+
+@socketio.on('array_clear_event')
+def handle_pixel_colored(message):
+    #TODO: insert into table python script!
+    print('Pixel array was cleared.')
 
 
 @socketio.on('testmessage')
