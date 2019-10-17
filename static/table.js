@@ -113,6 +113,10 @@ function rgb_to_rgbw(color){
   return new Array((color.r - min), (color.g - min), (color.b - min), min);
 }
 
+function rgbw_to_rgb(color){
+  return new Array(Math.min(color[0] + color[3], 255), Math.min(color[1] + color[3], 255), Math.min(color[2] + color[3], 255))
+}
+
 var gridVisible = false;
 function toggleGrid(){
   if(gridVisible){
@@ -155,4 +159,17 @@ function clearArray(){
   $(".pixel_elem").each(function() {
     $(this).get(0).style.backgroundColor = 'rgb(0,0,0)';
   });
+}
+
+socket.on('colorarray_show_event', function (data) {
+  for(var y = 0; y < data.length; y++){
+    for(var x = 0; x < data[y].length; x++){
+      var tmp_rgb_color = rgbw_to_rgb(data[y][x]);
+      ($('#table_view').children()[y].children[x]).style.backgroundColor = 'rgb(' + tmp_rgb_color[1] + ',' + tmp_rgb_color[0] + ',' + tmp_rgb_color[2] + ')'; 
+    }
+  }
+});
+
+function test(){
+  socket.emit('colorarray_show_event', {});
 }
