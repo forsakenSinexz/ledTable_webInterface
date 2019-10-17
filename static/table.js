@@ -25,6 +25,12 @@ function parsePixel(pixelString){
 
 function mouseOnPixelEventHanlder(event, pixel){
   dragClickButton = event.button;
+  if(colorpicking){
+    var pick = pixel.style.backgroundColor.replace("rgb(", "").replace(")", "").split(",");
+    var parsed_pick = new Array(parseInt(pick[0]), parseInt(pick[1]), parseInt(pick[2]));
+    applyColorPick(parsed_pick);
+    return;
+  }
   if(event.button == 0){ //left mouse button
     pixel.style.backgroundColor = 'rgb(' + pickedRGBColorLeft[0] + ',' + pickedRGBColorLeft[1] + ',' + pickedRGBColorLeft[2] + ')';
     var tmpPos = parsePixel(pixel.innerHTML);
@@ -32,6 +38,7 @@ function mouseOnPixelEventHanlder(event, pixel){
   }
   else if(event.button == 1){ //middle mouse button
     pixel.style.backgroundColor = 'rgb(' + 0 + ',' + 0 + ',' + 0 + ')';
+    var tmpPos = parsePixel(pixel.innerHTML);
     socket.emit('pixel_colored_event', {y: tmpPos[0], x: tmpPos[1], g: 0, r: 0, b: 0, w: 0});
   }
   else if(event.button == 2){ //right mouse button
@@ -53,6 +60,7 @@ function pixelDragOverHandler(pixel){
     }
     else if(dragClickButton == 1){ //middle mouse button
       pixel.style.backgroundColor = 'rgb(' + 0 + ',' + 0 + ',' + 0 + ')';
+      var tmpPos = parsePixel(pixel.innerHTML);
       socket.emit('pixel_colored_event', {y: tmpPos[0], x: tmpPos[1], g: 0, r: 0, b: 0, w: 0});
     }
     else if(dragClickButton == 2){ //right mouse button
@@ -67,15 +75,15 @@ function pixelDragOverHandler(pixel){
 var colorPickerLeft = new iro.ColorPicker(".colorPickerLeftClick", {
   width: 200,
   color: "rgb(255, 255, 255)",
-  borderwidth: 1,
-  borderColor: "#fff",
+  borderWidth: 2,
+  borderColor: "#FFFFFF"
 });
 
 var colorPickerRight = new iro.ColorPicker(".colorPickerRightClick", {
   width: 200,
   color: "rgb(255, 255, 255)",
-  borderwidth: 1,
-  borderColor: "#fff",
+  borderWidth: 2,
+  borderColor: "#FFFFFF"
 });
 
 var valuesLeft = document.getElementById("valuesLeft");
@@ -169,6 +177,44 @@ socket.on('colorarray_show_event', function (data) {
     }
   }
 });
+
+colorpicking = false;
+colorpickingHand = false;
+
+function pickColorStart(left){
+  $("html").get(0).style.cursor = 'url("static/icons/dropper.svg"), default';
+  colorpicking = true;
+  colorpickingHand = left;
+}
+
+function applyColorPick(color){
+  if(colorpickingHand){
+    colorPickerLeft.color.rgb = {r:color[0], g:color[1], b: color[2]};
+  }
+  else{
+    colorPickerRight.color.rgb = {r:color[0], g:color[1], b: color[2]};
+  }
+  colorpicking = false;
+  console.log($("html").get(0).style);
+  $("html").get(0).style.cursor = 'default';
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function test(){
   socket.emit('colorarray_show_event', {});

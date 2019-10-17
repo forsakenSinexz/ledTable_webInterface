@@ -8,6 +8,7 @@
   <title>LED Table</title>
   <script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
   <script src="{{ url_for('static', filename='iro.min.js') }}"></script>
+
   {% endblock %} 
 </head>
 <body>
@@ -15,7 +16,7 @@
     
   </header>
   <section>
-    <div class="content container-fluid">
+    <div class="content container-fluid align-content-xl-stretch">
       <div class="row">
         <div id="table_view" class="col-xl-auto">
           {% for row in range(23) %}
@@ -26,13 +27,6 @@
           </div>
           {% endfor %}
         </div>
-        <div class="btn-group-vertical col-xl-auto">
-            <button type="button" class="btn btn-dark btn-sm" style="max-height: 40px;" onclick="toggleGrid()">Toggle Grid</button>
-            <button type="button" class="btn btn-dark" style="max-height: 40px;" onclick="togglePixelNumbers()">Toggle Pixel numbers</button>
-            <button type="button" class="btn btn-dark" style="max-height: 40px;" onclick="copyChangesToClipboard()">Copy changes to Clipboard</button>
-            <button type="button" class="btn btn-dark" style="max-height: 40px;" onclick="clearArray()">Clear Array</button>
-            <button type="button" class="btn btn-dark" style="max-height: 40px;" onclick="test()">TEST</button>
-          </div>
         <div class="picker col-xl-auto">
           <div class="half">
             <div class="colorPickerLeftClick"></div>
@@ -48,6 +42,17 @@
             <span class="title">Selected Color:</span>
             <div id="valuesRight"></div>
           </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="btn-group col-xl-auto" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-dark btn-sm" style="max-height: 40px;" onclick="toggleGrid()"><img src="{{ url_for('static', filename='icons/grid.svg') }}" alt="Toggle grid" width="25" height="25" ></button>
+          <button type="button" class="btn btn-dark" style="max-height: 40px;" onclick="togglePixelNumbers()"><img src="{{ url_for('static', filename='icons/pixel-numbers.svg') }}" alt="Toggle pixel numbers" width="25" height="25" ></button>
+          <button type="button" class="btn btn-dark" style="max-height: 40px;" onclick="copyChangesToClipboard()"><img src="{{ url_for('static', filename='icons/clipboard.svg') }}" alt="Copy to clipboard" width="25" height="25" ></button>
+          <button type="button" class="btn btn-dark" style="max-height: 40px;" onclick="clearArray()"><img src="{{ url_for('static', filename='icons/trashcan.svg') }}" alt="Clear array" width="25" height="25" ></button>
+          <button type="button" class="btn btn-dark" style="max-height: 40px;" onclick="test()"><img src="{{ url_for('static', filename='icons/random.svg') }}" alt="Randomize pixels" width="25" height="25" ></button>
+          <button type="button" class="btn btn-dark" style="max-height: 40px;" onclick="pickColorStart(true)"><img src="{{ url_for('static', filename='icons/dropper.svg') }}" alt="Pick left" width="25" height="25" ></button>
+          <button type="button" class="btn btn-dark" style="max-height: 40px;" onclick="pickColorStart(false)"><img src="{{ url_for('static', filename='icons/dropper.svg') }}" alt="Pick right" width="25" height="25" ></button>
         </div>
       </div>
     </div>
