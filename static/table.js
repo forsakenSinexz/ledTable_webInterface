@@ -167,6 +167,7 @@ function clearArray(){
   $(".pixel_elem").each(function() {
     $(this).get(0).style.backgroundColor = 'rgb(0,0,0)';
   });
+  socket.emit('array_clear_event', {});
 }
 
 socket.on('colorarray_show_event', function (data) {
@@ -197,6 +198,10 @@ function applyColorPick(color){
   colorpicking = false;
   console.log($("html").get(0).style);
   $("html").get(0).style.cursor = 'default';
+}
+
+function mode_switch(mode){
+  socket.emit('mode_switch_event', {mode: mode})
 }
 
 

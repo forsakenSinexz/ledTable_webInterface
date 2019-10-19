@@ -2,18 +2,17 @@ from flask import Flask, render_template
 from flask_socketio import SocketIO
 import random
 
-
 # venv\Scripts\activate
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secreto!'
 socketio = SocketIO(app)
 
+web_colorarray = [[[0,0,0,0,1] for _ in range(23)] for _ in range(23)] # not really used.
 
 @app.route('/')
 def hello_world():
     return render_template('index.html')
-
 
 @app.route('/friends/<name>')
 def friends(name="Who are you?"):
@@ -21,19 +20,41 @@ def friends(name="Who are you?"):
 
 @socketio.on('pixel_colored_event')
 def handle_pixel_colored(message):
+    global table_main
     y = message['y']
     x = message['x']
     g = message['g']
     r = message['r']
     b = message['b']
     w = message['w']
-    #TODO: insert into table python script!
     print('pixel [{},{}] was colored: [{},{},{},{}]'.format(y,x,r,g,b,w))
+    web_colorarray[y][x][:4] = [g,r,b,w]
+    if(not (table_main is None)):
+        table_main.web_rgbw_array[y][x] = [g,r,b,w]
+    #Event.web_array_change_queue.put((y,x,[g,r,b,w]), timeout=50)
 
 @socketio.on('array_clear_event')
 def handle_array_clear(message):
     #TODO: insert into table python script!
     print('Pixel array was cleared.')
+    for y,row in enumerate(web_colorarray):
+        for x,_ in enumerate(row):
+            web_colorarray[y][x] = [0,0,0,0,1]
+    if(not (table_main is None)):
+        for y in range(len(table_main.web_rgbw_array)):
+            for x in range(len(table_main.web_rgbw_array[y])):
+                table_main.web_rgbw_array[y][x] = [0,0,0,0]
+
+
+@socketio.on('mode_switch_event')
+def handle_mode_switch(message):
+    global table_main
+    mode = message['mode']
+    print('Mode switched to {}.'.format(mode))
+    if(table_main is None):
+        return
+    table_main.switch_mode(mode)
+
 
 @socketio.on('colorarray_show_event')
 def tmp_test_show_reciever(message):
@@ -60,7 +81,18 @@ def handle_testmessage(stringMessage):
     #print(stringMessage)
     print(stringMessage['data'])
 
+def start_server(ip):
+    socketio.run(app, host=ip, port=5000, debug=False)
+    #socketio.run(app, host='127.0.0.1', port=5000, debug=True)
+
+def start_server_with_table(ip: str, table_main_given):
+    global table_main
+    table_main = table_main_given
+    start_server(ip)
+
 if __name__ == "__main__":
-    #tmp_show([[[255,0,0], [0,0,0]], [[0,0,0], [255,0,0]]])
-    socketio.run(app, host='127.0.0.1', port=5000, debug=True)
+    global table_main
+    table_main = None
+    start_server('127.0.0.1')
     #app.run(debug=True,host='127.0.0.1', port=8080)
+
