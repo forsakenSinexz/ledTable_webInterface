@@ -14,9 +14,9 @@ web_colorarray = [[[0,0,0,0,1] for _ in range(23)] for _ in range(23)] # not rea
 def hello_world():
     return render_template('index.html')
 
-@app.route('/friends/<name>')
-def friends(name="Who are you?"):
-    return 'Hello my good friend ' + name
+@app.route('/modi/<mode_name>')
+def modi_page(mode_name="AndyAnalyzer"):
+    return 'Hello my good friend ' + mode_name
 
 @socketio.on('pixel_colored_event')
 def handle_pixel_colored(message):
@@ -81,8 +81,8 @@ def handle_testmessage(stringMessage):
     #print(stringMessage)
     print(stringMessage['data'])
 
-def start_server(ip):
-    socketio.run(app, host=ip, port=5000, debug=False)
+def start_server(ip, debug=False):
+    socketio.run(app, host=ip, port=5000, debug=debug)
     #socketio.run(app, host='127.0.0.1', port=5000, debug=True)
 
 def start_server_with_table(ip: str, table_main_given):
@@ -93,6 +93,6 @@ def start_server_with_table(ip: str, table_main_given):
 if __name__ == "__main__":
     global table_main
     table_main = None
-    start_server('127.0.0.1')
+    start_server('127.0.0.1', debug=True)
     #app.run(debug=True,host='127.0.0.1', port=8080)
 
