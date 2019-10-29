@@ -12,9 +12,17 @@ socket.on('connect', function() {
   socket.emit('testmessage', {data: 'I\'m connected!'});
 });
 
+$('#mode-collapsible').on('show.bs.collapse', function () {
+  $('#nav-mode-btn').addClass('nav-button-collapsed');
+});
+
+$('#mode-collapsible').on('hidden.bs.collapse', function () {
+  $('#nav-mode-btn').removeClass('nav-button-collapsed');
+});
+
 document.addEventListener('mousedown', event => isMouseDown = true);
 document.addEventListener('mouseup', event => isMouseDown = false);
-document.addEventListener('contextmenu', event => event.preventDefault());
+document.querySelector("#table_view").addEventListener('contextmenu', event => event.preventDefault());
 
 function parsePixel(pixelString){
   var strings = pixelString.trim().split(",");
@@ -40,6 +48,7 @@ function mouseOnPixelEventHanlder(event, pixel){
     pixel.style.backgroundColor = 'rgb(' + 0 + ',' + 0 + ',' + 0 + ')';
     var tmpPos = parsePixel(pixel.innerHTML);
     socket.emit('pixel_colored_event', {y: tmpPos[0], x: tmpPos[1], g: 0, r: 0, b: 0, w: 0});
+    event.preventDefault();
   }
   else if(event.button == 2){ //right mouse button
     pixel.style.backgroundColor = 'rgb(' + pickedRGBColorRight[0] + ',' + pickedRGBColorRight[1] + ',' + pickedRGBColorRight[2] + ')';

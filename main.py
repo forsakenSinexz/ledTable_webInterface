@@ -14,6 +14,10 @@ web_colorarray = [[[0,0,0,0,1] for _ in range(23)] for _ in range(23)] # not rea
 def hello_world():
     return render_template('index.html')
 
+@app.route('/controls/<mode_name>')
+def control_modes(mode_name="paint"):
+    return render_template('controls/{}.html'.format(mode_name))
+
 @app.route('/modi/<mode_name>')
 def modi_page(mode_name="AndyAnalyzer"):
     return 'Hello my good friend ' + mode_name

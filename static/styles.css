@@ -1,14 +1,12 @@
 body {
+  font-family: Arial, Helvetica, sans-serif;
   background-color: rgb(30, 33, 40);
+}
 
 .printButton {
   background-color: white;
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  color: white;
-}
 
 section {
   display: -webkit-flex;
@@ -55,3 +53,74 @@ footer {
   font-family: monospace;
   line-height: 150%;
 }
+
+.nav-button{
+  color: white;
+  padding: 30px 15px;
+  border-radius: 0px;
+}
+
+.nav-button:hover{
+  color: white;
+  /*background-color: rgb(43, 43, 49);*/
+  background-color: #212529;
+}
+
+.nav-button-collapsed{
+  background-color: #212529;
+}
+
+.nav-button:focus{
+  box-shadow: 0 0 0 0 rgba(0,123,255,.25);
+}
+
+#mode-collapsible > .card-body {
+  background-color: #212529 !important;
+  flex: 0 0 auto !important;
+}
+
+#mode-collapsible > .card {
+  border-width: 0px 0px 1px 0px;
+  border-color: rgb(0, 219, 255);
+}
+
+#mode-collapsible .card-body {
+  flex: 0 0 auto !important;
+}
+
+.clickable-card {
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.clickable-card:hover{
+  cursor: pointer;
+  color: black !important;
+  background-color: #f8f9fa !important;
+}
+
+
+@media (min-width: 1200px) {
+  .card-columns {
+      -webkit-column-count:5;
+      -moz-column-count:5;
+      column-count:5;
+  }
+}
+
+.card.bg-dark .list-group-item {
+  transition: background-color 0.2s, color 0.2s;
+  background-color: #343a40 !important;
+  border-style: solid;
+  border-width: 0px 0px 0px 0px;
+  border-color: rgba(0,0,0,.125);
+}
+
+.card.bg-dark.clickable-card:hover .list-group-item {
+  background-color: #f8f9fa !important;
+}
+
+.navbar{
+  padding: 0;
+}
+
+

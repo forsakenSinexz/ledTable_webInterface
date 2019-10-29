@@ -1,24 +1,51 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">
-        <img src="{{ url_for('static', filename='imgs/infinityLogo.png') }}" width="30" height="30" alt="">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  MODES
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-              </li>
-            </ul>
-          </div>
+  <a class="navbar-brand" href="/">
+    <img src="{{ url_for('static', filename='imgs/infinityLogo.png') }}" width="80" height="80" alt="" style="margin-top: -6px;">
+    <span>INFINITY Table</span>
+  </a>
+  
+  
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a id="nav-mode-btn" class="btn nav-button" data-toggle="collapse" href="#mode-collapsible" role="button" aria-expanded="false" aria-controls="collapseExample">
+          MODES
+        </a>
+      </li>
+    </ul>
+  </div>
+  
 </nav>
+<div class="collapse" id="mode-collapsible">
+  <div class="card card-body bg-dark text-light">
+      <div class="card-deck">
+      <div class="card bg-dark text-light border-0 col-4">
+        <div class="card-body bg-dark text-light">
+          <h5 class="card-title">Audio Analyzers</h5>
+        </div>
+        <ul class="list-group">
+          <a href="#" class="list-group-item list-group-item-action bg-dark text-light border-0" onclick="mode_switch(0)">Andy Analyzer </a>
+          <a href="#" class="list-group-item list-group-item-action bg-dark text-light border-0" onclick="mode_switch(1)">Square Analyzer </a>
+        </ul>
+      </div>
+      <div class="card bg-dark text-light border-0 col-4">
+        <div class="card-body bg-dark text-light">
+          <h5 class="card-title">Control from here</h5>
+        </div>
+        <ul class="list-group">
+          <a href="/controls/paint" class="list-group-item list-group-item-action bg-dark text-light border-0" onclick="mode_switch(2)">Paint</a>
+        </ul>
+      </div>
+      <div class="card bg-dark text-light border-0 col-4">
+        <div class="card-body bg-dark text-light">
+          <h5 class="card-title">Games</h5>
+        </div>
+        <ul class="list-group">
+          <a href="#" class="list-group-item list-group-item-action bg-dark text-light border-0">Snake</a>
+          <a href="#" class="list-group-item list-group-item-action bg-dark text-light border-0">Pong</a>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+

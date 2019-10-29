@@ -14,57 +14,101 @@
   </header>
   
   <section>
-    <div class="content container-fluid align-content-xl-stretch">
-      <div class="row">
-          <div id="table_view" class="col-xl-auto">
-              {% for row in range(23) %}
-                  <div class="table_row" style="display: flex;">
-                      {% for pixel in range(23) %}
-                          <div class="pixel_elem" style="width:30px;height:30px;border:0px solid #969696; background-color: rgb(0,0,0); font-size: 0;" ondragstart="return false;" onmousedown="mouseOnPixelEventHanlder(event, this)" onmouseenter="pixelDragOverHandler(this)">{{ row }}, {{ pixel }}</div>
-                      {% endfor %}
-                  </div>
-              {% endfor %}
-          </div>
-        <div class="picker col-xl-auto">
-          <div class="half">
-            <div class="colorPickerLeftClick"></div>
-          </div>
-          <div class="half readout">
-            <span class="title">Selected Color:</span>
-            <div id="valuesLeft"></div>
-          </div>
-          <div class="half">
-            <div class="colorPickerRightClick"></div>
-          </div>
-          <div class="half readout">
-            <span class="title">Selected Color:</span>
-            <div id="valuesRight"></div>
+    <div class="container-fluid" style="margin-top: 20px;">
+      <div class="card-columns">
+        
+        
+        <div class="card text-white bg-dark mb-3 clickable-card" >
+          <div class="card-body">
+            <h5 class="card-title">Andy Analyzer</h5>
+            <p class="card-text">This is an audio analyzer. It listens to low frequencies and displays those by generating an square that grows to the outside.</p>
+            <p class="card-text"><small class="text-muted">Idea by Andreas Lehner</small></p>
           </div>
         </div>
-        <div class="btn-group col-xl-auto" role="group" aria-label="Basic example">
-          <button type="button" class="btn btn-dark btn-sm" style="max-height: 40px;" onclick="mode_switch(0)"> Andy Analyzer</button>
-          <button type="button" class="btn btn-dark" style="max-height: 40px;" onclick="mode_switch(1)">Square Analyzer</button>
-          <button type="button" class="btn btn-dark" style="max-height: 40px;" onclick="mode_switch(2)">Paint here</button>
+        
+        <div class="card text-white bg-dark mb-3 clickable-card" >
+          <div class="card-body">
+            <h5 class="card-title">Square Analayzer</h5>
+            <p class="card-text">This is an audio analyzer. It generates a square in the middle of the table and around that square are the frequencies displayed with bars.</p>
+          </div>
         </div>
-      </div>
-      
-      <div class="row">
-        <div class="btn-group col-xl-auto" role="group" aria-label="Basic example">
-          <button type="button" class="btn btn-dark btn-sm" style="max-height: 40px;" onclick="toggleGrid()"><img src="{{ url_for('static', filename='icons/grid.svg') }}" alt="Toggle grid" width="25" height="25" ></button>
-          <button type="button" class="btn btn-dark" style="max-height: 40px;" onclick="togglePixelNumbers()"><img src="{{ url_for('static', filename='icons/pixel-numbers.svg') }}" alt="Toggle pixel numbers" width="25" height="25" ></button>
-          <button type="button" class="btn btn-dark" style="max-height: 40px;" onclick="copyChangesToClipboard()"><img src="{{ url_for('static', filename='icons/clipboard.svg') }}" alt="Copy to clipboard" width="25" height="25" ></button>
-          <button type="button" class="btn btn-dark" style="max-height: 40px;" onclick="clearArray()"><img src="{{ url_for('static', filename='icons/trashcan.svg') }}" alt="Clear array" width="25" height="25" ></button>
-          <button type="button" class="btn btn-dark" style="max-height: 40px;" onclick="test()"><img src="{{ url_for('static', filename='icons/random.svg') }}" alt="Randomize pixels" width="25" height="25" ></button>
-          <button type="button" class="btn btn-dark" style="max-height: 40px;" onclick="pickColorStart(true)"><img src="{{ url_for('static', filename='icons/dropper.svg') }}" alt="Pick left" width="25" height="25" ></button>
-          <button type="button" class="btn btn-dark" style="max-height: 40px;" onclick="pickColorStart(false)"><img src="{{ url_for('static', filename='icons/dropper.svg') }}" alt="Pick right" width="25" height="25" ></button>
+        
+        <div class="card text-white bg-dark p-3">
+          <blockquote class="blockquote mb-0 card-body">
+            <p>Lass uns einen LED Tisch bauen.</p>
+            <footer class="blockquote-footer">
+              <small class="text-muted">
+                Andreas Lehner
+              </small>
+            </footer>
+          </blockquote>
         </div>
+        
+        <div class="card text-white bg-dark mb-3 clickable-card">
+          <div class="card-body">
+            <h5 class="card-title">Simple painting</h5>
+            <p class="card-text">Control the output of the table by simply painting on the screen!</p>
+          </div>
+        </div>
+        
+        <div class="card text-white bg-dark mb-3 clickable-card">
+          <div class="card-body">
+            <h5 class="card-title">Snake</h5>
+            <p class="card-text">Play the classic snake game. Multiplayer up to 4 players possible!</p>
+          </div>
+        </div>
+        
+        <div class="card text-white bg-dark mb-3 clickable-card">
+          <div class="card-body">
+            <h5 class="card-title">Pong</h5>
+            <p class="card-text">Play the classic pong game. Multiplayer up to 4 players possible!</p>
+            <p class="card-text"><small class="text-muted">Idea and implementation by Christian Zernickel</small></p>
+          </div>
+        </div>
+        
+        <div class="card text-white bg-dark p-3">
+          <blockquote class="blockquote mb-0 card-body">
+            <p>Das wären dann Eintausend-zweihundert-dreihundert-fünf</p>
+            <footer class="blockquote-footer">
+              <small class="text-muted">
+                Christian Zernickel <cite title="Source Title">beim Versuch 1235 zu sagen.</cite>
+              </small>
+            </footer>
+          </blockquote>
+        </div>
+
+        <div class="card text-white bg-dark p-3">
+            <blockquote class="blockquote mb-0 card-body">
+              <p>Der Tisch ist wie das moderene Lagerfeuer</p>
+              <footer class="blockquote-footer">
+                <small class="text-muted">
+                  Stev
+                </small>
+              </footer>
+            </blockquote>
+          </div>
+        
+        <div class="card text-white bg-dark mb-3">
+          <div class="card-body">
+            <h5 class="card-title">Implementation ideas</h5>
+            <ul class="list-group">
+                <li class="list-group-item"><span class="badge badge-secondary">Andi</span> Looping Louie </li>
+                <li class="list-group-item"><span class="badge badge-secondary">Dani</span> Idle table = machine learning snake game </li>
+                <li class="list-group-item"><span class="badge badge-secondary">A.Mutter</span> Telegram connection -> do something when a message comes in </li>
+                <li class="list-group-item"><span class="badge badge-secondary">-</span> Clock(s)</li>
+                <li class="list-group-item"><span class="badge badge-secondary">Dani</span> Mini Andy analyzers around glasses</li>
+                <li class="list-group-item"><span class="badge badge-secondary">Stev</span> Activity style drawing </li>
+                <li class="list-group-item"><span class="badge badge-secondary">David</span> Flaschendrehen </li>
+                <li class="list-group-item"><span class="badge badge-secondary">-</span> Reaction drinking games </li>
+              </ul>
+          </div>
+        </div>
+        
       </div>
     </div>
   </section>
   <footer>
-    <div id="footer">
-      &copy; Copyright 2019 by <a href="http://domain.invalid/">Daniel und Christian</a>.
-    </div>
+    {% include "basic_elements/footer.html" %}
   </footer>
   <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
   <script src="{{ url_for('static', filename='table.js') }}"></script>
