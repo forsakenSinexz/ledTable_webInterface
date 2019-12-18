@@ -1,117 +1,30 @@
 <!doctype html>
 <html>
 <head>
-  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <title>LED Table</title>
-  <script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
-  <script src="{{ url_for('static', filename='iro.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='colors.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>LED Table</title>
+    <script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='iro.min.js') }}"></script>
 </head>
-<body>
-  <header>
-    {% include "basic_elements/nav.html" %}
-  </header>
-  
-  <section>
-    <div class="container-fluid" style="margin-top: 20px;">
-      <div class="card-columns">
+<body class="fcolor-focus">
+    <header>
+        {% include "basics/topnav.html" %}
+    </header>
+    <div id="wrapper">
         
-        
-        <!-- <div class="card text-white bg-dark mb-3 clickable-card" > -->
-          <div class="card bg-info mb-3 clickable-card" >
-            <div class="card-body">
-              <h5 class="card-title">Andy Analyzer</h5>
-              <p class="card-text">This is an audio analyzer. It listens to low frequencies and displays those by generating an square that grows to the outside.</p>
-              <p class="card-text"><small class="text-dark">Idea by Andreas Lehner</small></p>
-            </div>
-          </div>
-          
-          <div class="card text-white bg-dark mb-3 clickable-card" >
-            <div class="card-body">
-              <h5 class="card-title">Square Analayzer</h5>
-              <p class="card-text">This is an audio analyzer. It generates a square in the middle of the table and around that square are the frequencies displayed with bars.</p>
-            </div>
-          </div>
-          
-          <div class="card text-white bg-dark p-3">
-            <blockquote class="blockquote mb-0 card-body">
-              <p>Lass uns einen LED Tisch bauen.</p>
-              <footer class="blockquote-footer">
-                <small class="text-muted">
-                  Andreas Lehner
-                </small>
-              </footer>
-            </blockquote>
-          </div>
-          
-          <div class="card text-white bg-dark mb-3 clickable-card">
-            <div class="card-body">
-              <h5 class="card-title">Simple painting</h5>
-              <p class="card-text">Control the output of the table by simply painting on the screen!</p>
-            </div>
-          </div>
-          
-          <div class="card text-white bg-dark mb-3 clickable-card">
-            <div class="card-body">
-              <h5 class="card-title">Snake</h5>
-              <p class="card-text">Play the classic snake game. Multiplayer up to 4 players possible!</p>
-            </div>
-          </div>
-          
-          <div class="card text-white bg-dark mb-3 clickable-card">
-            <div class="card-body">
-              <h5 class="card-title">Pong</h5>
-              <p class="card-text">Play the classic pong game. Multiplayer up to 4 players possible!</p>
-              <p class="card-text"><small class="text-muted">Idea and implementation by Christian Zernickel</small></p>
-            </div>
-          </div>
-          
-          <div class="card bg-info p-3">
-            <blockquote class="blockquote mb-0 card-body">
-              <p>Das wären dann Eintausend-zweihundert-dreihundert-fünf</p>
-              <footer class="blockquote-footer">
-                <small class="text-muted">
-                  Christian Zernickel <cite title="Source Title">beim Versuch 1235 zu sagen.</cite>
-                </small>
-              </footer>
-            </blockquote>
-          </div>
-          
-          <div class="card text-white bg-dark p-3">
-            <blockquote class="blockquote mb-0 card-body">
-              <p>Der Tisch ist wie das moderene Lagerfeuer</p>
-              <footer class="blockquote-footer">
-                <small class="text-muted">
-                  Stev
-                </small>
-              </footer>
-            </blockquote>
-          </div>
-          
-          <div class="card text-white bg-dark mb-3">
-            <div class="card-body">
-              <h5 class="card-title">Implementation ideas</h5>
-              <ul class="list-group">
-                <li class="list-group-item"><span class="badge badge-secondary">Andi</span> Looping Louie </li>
-                <li class="list-group-item"><span class="badge badge-secondary">Dani</span> Idle table = machine learning snake game </li>
-                <li class="list-group-item"><span class="badge badge-secondary">A.Mutter</span> Telegram connection -> do something when a message comes in </li>
-                <li class="list-group-item"><span class="badge badge-secondary">-</span> Clock(s)</li>
-                <li class="list-group-item"><span class="badge badge-secondary">Dani</span> Mini Andy analyzers around glasses</li>
-                <li class="list-group-item"><span class="badge badge-secondary">Stev</span> Activity style drawing </li>
-                <li class="list-group-item"><span class="badge badge-secondary">David</span> Flaschendrehen </li>
-                <li class="list-group-item"><span class="badge badge-secondary">-</span> Reaction drinking games </li>
-              </ul>
-            </div>
-          </div>
-          
+        {% include "basics/sidenav.html" %}
+        <div id="content">
+            Was wollen wir trinken wir feiern heute nacht was
+            wir trinken
         </div>
-      </div>
-    </section>
-    <footer>
-      {% include "basic_elements/footer.html" %}
-    </footer>
+        <footer>
+            <!-- include "basics/footer.html" %} -->
+        </footer>
+    </div>
     <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename='table.js') }}"></script>
-  </body>
-  </html>
+</body>
+</html>
