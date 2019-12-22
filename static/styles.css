@@ -210,7 +210,7 @@ a, a:hover, a:focus {
 }
 
 .sidebar-nav li  {
-  min-height: 64px;
+  min-height: 74px;
 }
 
 .subsidebar-nav li  {
@@ -243,6 +243,7 @@ a, a:hover, a:focus {
   padding: 5px;
   font-size: 1.1em;
   display: block;
+  min-height: 74px;
 }
 
 .subsidebar ul li a {

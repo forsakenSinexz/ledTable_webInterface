@@ -1,8 +1,11 @@
 from flask import Flask, render_template
 from flask_socketio import SocketIO
 import random
+import Table_Event
 
 # venv\Scripts\activate
+
+#TODO wenn alles fertig ist, mache eine zweite main klasse ohne die (if (table_main is not none)) überall (effizienz)
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secreto!'
@@ -20,7 +23,22 @@ def control_modes(mode_name="paint"):
 
 @app.route('/modi/<mode_name>')
 def modi_page(mode_name="AndyAnalyzer"):
-    return 'Hello my good friend ' + mode_name
+    return 
+
+@app.route('/analyzers/<mode_name>')
+def analyzer_page(mode_name='andy'):
+    return render_template('analyzers/{}.html'.format(mode_name))
+
+@socketio.on('analyzer_volume_change')
+def change_analyzer_volume(message):
+    #Event.analyzer_percentage_queue.put(message['value'])
+    Table_Event.analyzer_event(Table_Event.Analyzer_Event(0, message['value']))
+    socketio.emit('analyzer_volume_update', {'value': message['value']}, broadcast=True)
+
+@socketio.on('request_analyzer_volume')
+def answer_analyzer_volume_request():
+    #TODO request from table
+    socketio.emit('analyzer_volume_update', {'value': 25})
 
 @socketio.on('pixel_colored_event')
 def handle_pixel_colored(message):
@@ -97,6 +115,7 @@ def start_server_with_table(ip: str, table_main_given):
 if __name__ == "__main__":
     global table_main
     table_main = None
-    start_server('127.0.0.1', debug=True)
+    #start_server('127.0.0.1', debug=True)
+    start_server('192.168.178.30', debug=True)
     #app.run(debug=True,host='127.0.0.1', port=8080)
 
