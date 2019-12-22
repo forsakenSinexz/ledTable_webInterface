@@ -221,7 +221,7 @@ a, a:hover, a:focus {
 }
 
 .subsidebar-nav li:hover  {
-  background-color: rgba(255,255,255,0.5);
+  background-color: rgba(0,0,0,0.3);
   color: white;
 }
 
@@ -281,3 +281,4 @@ a, a:hover, a:focus {
   min-width: 300px;
   max-width: 300px;
 }
+
