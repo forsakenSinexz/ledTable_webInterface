@@ -15,7 +15,7 @@ body{
 }
 
 .color-bar{
-    background-color: #1f1e1e;
+    background-color: rgb(31, 30, 30);
 }
 
 .fcolor-focus{
@@ -23,12 +23,22 @@ body{
 }
 
 .fcolor-nofocus{
-    color: #cbc5fb;
+    color: #cbc5bf;
 }
 
-
+.color-bar-50{
+    background-color: rgba(31, 30, 30, 0.3);
+}
 .opacity-50{
     opacity: 0.5;
+}
+
+.btn-invisible{
+    color:#cbc5bf;
+}
+
+.btn-invisible:hover{
+    color:#fff;
 }
 
 /* _________________FONT________________ */

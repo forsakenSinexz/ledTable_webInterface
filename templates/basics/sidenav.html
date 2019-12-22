@@ -3,10 +3,10 @@
 
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
-        <ul class="sidebar-nav text-center">
-            <li> <a href="#" onclick="moveSideBarSelectorBar(this)"><img src="{{ url_for('static', filename='imgs/analyzer.png') }}" alt="A"></a> </li>
-            <li> <a href="#" onclick="moveSideBarSelectorBar(this)">G</a> </li>
-            <li> <a href="#" onclick="moveSideBarSelectorBar(this)">P</a> </li>
+        <ul class="sidebar-nav text-center fcolor-nofocus">
+            <li> <a href="#" onclick="moveSideBarSelectorBar(this, 0)">{% include 'svgs/analyzers.svg' %}</a> </li>
+            <li> <a href="#" onclick="moveSideBarSelectorBar(this, 1)">G</a> </li>
+            <li> <a href="#" onclick="moveSideBarSelectorBar(this, 2)">P</a> </li>
         </ul>
     </div> <!-- /#sidebar-wrapper -->
 </div> <!-- /#wrapper -->
