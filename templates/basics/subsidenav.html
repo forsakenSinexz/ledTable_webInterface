@@ -1,12 +1,34 @@
-<div id="sidebar" class="color-bar">
-    <span id="slelected-bar-indicator"></span>
-
+<div class="subsidebar color-bar-50 0 active">
     <!-- Sidebar -->
-    <div id="sidebar-wrapper">
-        <ul class="sidebar-nav text-center">
-            <li> <a href="#" onclick="moveSideBarSelectorBar(this)"><img src="{{ url_for('static', filename='imgs/analyzer.png') }}" alt="A"></a> </li>
-            <li> <a href="#" onclick="moveSideBarSelectorBar(this)">G</a> </li>
-            <li> <a href="#" onclick="moveSideBarSelectorBar(this)">P</a> </li>
+    <div class="subsidebar-wrapper">
+        <ul class="subsidebar-nav fcolor-nofocus">
+            <li> <a href="#" onclick="mode_switch('andi_analyzer_v6')">Andi</a> </li>
+            <li> <a href="#" onclick="mode_switch('square_analyzer')">Square</a> </li>
+            <li> <a href="#" onclick="mode_switch('centered_bars_analyzer')">Centered Bars</a></li>
+            <li> <a href="#" onclick="mode_switch('bass_stairs_analyzer')">Bass stairs</a> </li>
+            <li> <a href="#" onclick="mode_switch('snowflake_v1')">Snowflake 1</a> </li>
+            <li> <a href="#" onclick="mode_switch('snowflake_v2')">Snowflake 2</a> </li>
+            <li> <a href="#" onclick="mode_switch('bar_analyzer')">Bar</a> </li>
         </ul>
     </div> <!-- /#sidebar-wrapper -->
 </div> <!-- /#wrapper -->
+
+<div class="subsidebar color-bar-50 1 active">
+    <!-- Sidebar -->
+    <div class="subsidebar-wrapper">
+        <ul class="subsidebar-nav fcolor-nofocus">
+            <li> <a href="#" onclick="mode_switch('snake')">Snake</a> </li>
+            <li> <a href="#" onclick="mode_switch('pong')">Pong</a> </li>
+        </ul>
+    </div> <!-- /#sidebar-wrapper -->
+</div> <!-- /#wrapper -->
+
+<div class="subsidebar color-bar-50 2 active">
+    <!-- Sidebar -->
+    <div class="subsidebar-wrapper">
+        <ul class="subsidebar-nav fcolor-nofocus">
+            <li> <a href="#" onclick="mode_switch('web_paint')">Paint</a> </li>
+        </ul>
+    </div> <!-- /#sidebar-wrapper -->
+</div> <!-- /#wrapper -->
+<div id="pseudo-sidebar"></div>

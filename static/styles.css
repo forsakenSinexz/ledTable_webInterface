@@ -1,5 +1,5 @@
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Tahoma, Geneva, sans-serif;
 }
 
 .printButton {
@@ -131,6 +131,7 @@ footer {
 
 #content{
   float: left;
+  transition: margin-left 0.3s;
 }
 
 .wrapper {
@@ -147,8 +148,24 @@ footer {
   min-height: 100vh;
 }
 
+.subsidebar{
+  float: left;
+  color: #fff;
+  transition: all 0.3s;
+  min-width: 300px;
+  max-width: 300px;
+  min-height: 100vh;
+  position: absolute;
+  z-index: -100;
+  margin-left: 80px;
+}
+
 #sidebar.active {
   margin-left: -80px;
+}
+
+.subsidebar.active {
+  margin-left: -380px;
 }
 
 a[data-toggle="collapse"] {
@@ -182,12 +199,30 @@ a, a:hover, a:focus {
   padding-left: 0px;
 }
 
+.subsidebar-nav{
+  list-style-position: outside;
+  list-style-type: none;
+  padding-left: 0px;
+}
+
 .sidebar-nav ul li{
   padding-left: 8px;
 }
 
 .sidebar-nav li  {
   min-height: 64px;
+}
+
+.subsidebar-nav li  {
+  padding-left: 20px;
+  padding-top:3px;
+  min-height: 45px;
+  transition: 0.3s;
+}
+
+.subsidebar-nav li:hover  {
+  background-color: rgba(255,255,255,0.5);
+  color: white;
 }
 
 .sidebar-nav li a {
@@ -209,18 +244,15 @@ a, a:hover, a:focus {
   font-size: 1.1em;
   display: block;
 }
-#sidebar ul li a:hover {
-  background: #161616;
+
+.subsidebar ul li a {
+  padding: 5px;
+  font-size: 1.1em;
+  display: block;
 }
 
-#sidebar ul li.active > a, a[aria-expanded="true"] {
-  color: #fff;
-  background: #6d7fcc;
-}
-ul ul a {
-  font-size: 0.9em !important;
-  padding-left: 5px !important;
-  background: #6d7fcc;
+#sidebar ul li a:hover {
+  background: #161616;
 }
 
 #slelected-bar-indicator{
@@ -232,4 +264,20 @@ ul ul a {
   background-color: white;
   z-index: 500;
   margin-left: 78px;
+}
+
+#pseudo-sidebar{
+  transition: all 0.3s;
+  min-width: 0px;
+  max-width: 0px;
+  min-height: 100vh;
+  opacity: 0;
+  position: relative;
+  float:left;
+  z-index: -1000;
+}
+
+#pseudo-sidebar.active{
+  min-width: 300px;
+  max-width: 300px;
 }
