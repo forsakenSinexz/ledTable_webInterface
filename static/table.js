@@ -10,6 +10,7 @@ var isMouseDown;
 var sideBarOffset = document.getElementById('sidebar').getBoundingClientRect().top;
 console.log(sideBarOffset);
 var sideBarSelectorBarPos = 0;
+var currentlySelectedSidenavItem = document.getElementsByClassName('sidebar-nav')[0];
 
 var currentMode = 0;
 
@@ -31,6 +32,9 @@ $(document).ready(function () {
 });
 
 function moveSideBarSelectorBar(elem, subnavnumber){
+  currentlySelectedSidenavItem.classList.remove('active');
+  elem.classList.add('active');
+  currentlySelectedSidenavItem = elem;
   animiere(elem.getBoundingClientRect().top);
   if($('.subsidebar.' + subnavnumber).hasClass('active')){
     $('.subsidebar.' + subnavnumber).removeClass('active');

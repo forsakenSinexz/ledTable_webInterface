@@ -41,4 +41,92 @@ body{
     color:#fff;
 }
 
+
+
+
+/* SIDEBAR NAV SVGs */
+
+#sidebar ul li .st0{
+    stroke: #cbc5bf;
+    fill: rgba(255,255,255,0);
+    transition: all 0.3s;
+}
+
+#sidebar ul li:hover .st0{
+    stroke: #fff;
+    fill: rgba(255,255,255,0);
+}
+
+#sidebar ul li:hover #games-svg #XMLID_10_,
+#sidebar ul li:hover #games-svg #XMLID_5_,
+#sidebar ul li:hover #games-svg #XMLID_7_{
+    fill: rgba(255,255,255,1);
+    transition: 0.2s;
+}
+
+#sidebar ul li:hover #paint-svg #XMLID_1_,
+#sidebar ul li:hover #paint-svg #XMLID_2_,
+#sidebar ul li:hover #paint-svg #XMLID_3_,
+#sidebar ul li:hover #paint-svg #XMLID_8_,
+#sidebar ul li:hover #paint-svg #XMLID_6_,
+#sidebar ul li:hover #paint-svg #XMLID_7_{
+    fill: rgba(255,255,255,1);
+    transition: 0.2s;
+}
+
+#sidebar ul li #analyzers-svg #XMLID_4_,
+#sidebar ul li #analyzers-svg #XMLID_2_,
+#sidebar ul li #analyzers-svg #XMLID_11_,
+#sidebar ul li #analyzers-svg #XMLID_10_,
+#sidebar ul li #analyzers-svg #XMLID_25_,
+#sidebar ul li #analyzers-svg #XMLID_24_,
+#sidebar ul li #analyzers-svg #XMLID_22_,
+#sidebar ul li #analyzers-svg #XMLID_21_,
+#sidebar ul li #analyzers-svg #XMLID_34_,
+#sidebar ul li #analyzers-svg #XMLID_35_,
+#sidebar ul li #analyzers-svg #XMLID_36_,
+#sidebar ul li #analyzers-svg #XMLID_32_,
+#sidebar ul li #analyzers-svg #XMLID_28_,
+#sidebar ul li #analyzers-svg #XMLID_27_,
+#sidebar ul li #analyzers-svg #XMLID_31_,
+#sidebar ul li #analyzers-svg #XMLID_30_,
+#sidebar ul li #analyzers-svg #XMLID_37_,
+#sidebar ul li #analyzers-svg #XMLID_33_{
+    stroke: rgba(255,255,255,0);
+}
+
+#sidebar ul li:hover #analyzers-svg #XMLID_4_,
+#sidebar ul li:hover #analyzers-svg #XMLID_2_,
+#sidebar ul li:hover #analyzers-svg #XMLID_11_,
+#sidebar ul li:hover #analyzers-svg #XMLID_10_,
+#sidebar ul li:hover #analyzers-svg #XMLID_25_,
+#sidebar ul li:hover #analyzers-svg #XMLID_24_,
+#sidebar ul li:hover #analyzers-svg #XMLID_22_,
+#sidebar ul li:hover #analyzers-svg #XMLID_21_,
+#sidebar ul li:hover #analyzers-svg #XMLID_34_,
+#sidebar ul li:hover #analyzers-svg #XMLID_35_,
+#sidebar ul li:hover #analyzers-svg #XMLID_36_,
+#sidebar ul li:hover #analyzers-svg #XMLID_32_,
+#sidebar ul li:hover #analyzers-svg #XMLID_28_,
+#sidebar ul li:hover #analyzers-svg #XMLID_27_,
+#sidebar ul li:hover #analyzers-svg #XMLID_31_,
+#sidebar ul li:hover #analyzers-svg #XMLID_30_,
+#sidebar ul li:hover #analyzers-svg #XMLID_37_,
+#sidebar ul li:hover #analyzers-svg #XMLID_33_{
+    stroke: #fff;
+    transition: 0.2s;
+}
+
+#sidebar ul li:hover #analyzers-svg .st0{
+    fill: #fff;
+}
+
+#sidebar ul li .active svg .st0{
+    fill: #fff;
+    stroke: #fff;
+}
+
+
+
+
 /* _________________FONT________________ */
