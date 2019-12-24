@@ -1,21 +1,29 @@
+:root{
+    --color-bg: #2f2d2d;
+    --color-nofocus: #cbc5bf;
+    --color-focus: white;
+    --color-sidebar: #1f1e1e;
+}
+
+
 body{
-    background-color: #2f2d2d;
+    background-color: var(--color-bg);
 }
 
 .color-bg{
-    background-color: #2f2d2d;
+    background-color: var(--color-bg);
 }
 
 .color-nofocus{
-    background-color: #cbc5bf;
+    background-color: var(--color-nofocus);
 }
 
 .color-focus{
-    background-color: white;
+    background-color: var(--color-focus);
 }
 
 .color-bar{
-    background-color: rgb(31, 30, 30);
+    background-color: var(--color-sidebar);
 }
 
 .fcolor-focus{

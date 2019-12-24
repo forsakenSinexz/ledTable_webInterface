@@ -282,8 +282,8 @@ function animiere(toPosY) {
   }
   
   
-  
-  
+  // Range slider
+
   
   
   

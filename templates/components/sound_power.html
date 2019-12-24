@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2 text-right">
+            Sound volume power |
+        </div>
+        <div class="col-1 text-right">
+            <span id="volume_value">7</span>
+        </div>
+        <div class="col-9">
+            <input id="volume_range" type="range" />
+        </div>
+    </div>
+</div>
+
+<script>
+    var slider = document.getElementById("volume_range");
+    var output = document.getElementById("volume_value");
+    output.innerHTML = slider.value; // Display the default slider value
+    
+    // Update the current slider value (each time you drag the slider handle)
+    slider.oninput = function() {
+        output.innerHTML = this.value;
+        socket.emit('analyzer_volume_change', {value: this.value});
+    } 
+</script>
