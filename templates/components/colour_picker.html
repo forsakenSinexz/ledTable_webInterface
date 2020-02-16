@@ -1,0 +1,28 @@
+<div class="picker">
+    <div class="half">
+        <div class="colorPicker"></div>
+    </div>
+    <div class="half readout">
+        <span class="title">Selected Color:</span>
+        <div id="pickerValues"></div>
+    </div>
+</div>
+
+<script>
+    var colourPicker = new iro.ColorPicker(".colorPicker", {
+        width: 200,
+        color: "rgb(255, 255, 255)",
+        borderWidth: 2,
+        borderColor: "#FFFFFF"
+    });
+    var colorPickerValues = document.getElementById("pickerValues");
+    colourPicker.on(["color:init", "color:change"],
+    function(color){
+        pickedRGBWColor = rgb_to_rgbw(color.rgb);
+        pickedRGBColor = new Array(color.rgb.r, color.rgb.g, color.rgb.b);
+        colorPickerValues.innerHTML = [
+        "rgbw: (" + pickedRGBWColorLeft[0] + "," + pickedRGBWColorLeft[1] + "," + pickedRGBWColorLeft[2] + "," + pickedRGBWColorLeft[3] + ")",
+        "rgb: (" + pickedRGBColorLeft[0] + "," + pickedRGBColorLeft[1] + "," + pickedRGBColorLeft[2] + ")"
+        ].join("<br>");
+    });
+</script>

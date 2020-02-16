@@ -1,5 +1,6 @@
 body {
   font-family: Tahoma, Geneva, sans-serif;
+  height: 0;
 }
 
 .printButton {
@@ -12,10 +13,11 @@ section {
   display: flex;
 }
 
-.content {
+#content {
   /*!-webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1; */
+  flex-grow: 100;
   padding: 20px;
 }
 
@@ -134,9 +136,10 @@ footer {
   transition: margin-left 0.3s;
 }
 
-.wrapper {
-  display: flex;
+#wrapper {
   align-items: stretch;
+  position: relative;
+  display: flex;
 }
 
 #sidebar {
@@ -146,6 +149,12 @@ footer {
   min-width: 80px;
   max-width: 80px;
   min-height: 100vh;
+}
+
+#sidenav-container{
+  position: relative;
+  width: max-content;
+  height: max-content;
 }
 
 .subsidebar{

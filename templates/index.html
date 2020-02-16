@@ -13,15 +13,19 @@
     <header>
         {% include "basics/topnav.html" %}
     </header>
-    <div id="wrapper">
-        
+    <div id="sidenav-container"> 
         {% include "basics/sidenav.html" %}
         {% include "basics/subsidenav.html" %}
+    </div>
+    <div id="wrapper">
         <div id="content">
-            <section>
-                <!-- {% include "contentContainer.html" %} -->
-                {% include "components/sound_power.html" %}
-            </section>
+            <div class="container-fluid">
+                    <!--  include "contentContainer.html" %}  ADD {} and %%!!--> 
+                    {% include "components/sound_power.html" %}
+                    <div class="row">
+                        {% include "components/colour_picker.html" %}
+                    </div>
+            </div>
         </div>
         <footer>
             <!-- include "basics/footer.html" %} -->
