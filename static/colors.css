@@ -3,6 +3,9 @@
     --color-nofocus: #cbc5bf;
     --color-focus: white;
     --color-sidebar: #1f1e1e;
+    --color-bar: rgba(31, 30, 30, 0.3);
+    --color-rgba-black: rgba(255,255,255,0);
+    --color-acent-light: #7fd246;
 }
 
 
@@ -27,26 +30,26 @@ body{
 }
 
 .fcolor-focus{
-    color: #fff;
+    color: var(--color-focus);
 }
 
 .fcolor-nofocus{
-    color: #cbc5bf;
+    color: var(--color-nofocus);
 }
 
 .color-bar-50{
-    background-color: rgba(31, 30, 30, 0.3);
+    background-color: var(--color-bar);
 }
 .opacity-50{
     opacity: 0.5;
 }
 
 .btn-invisible{
-    color:#cbc5bf;
+    color: var(--color-nofocus);
 }
 
 .btn-invisible:hover{
-    color:#fff;
+    color: var(--color-focus);
 }
 
 
@@ -55,20 +58,20 @@ body{
 /* SIDEBAR NAV SVGs */
 
 #sidebar ul li .st0{
-    stroke: #cbc5bf;
-    fill: rgba(255,255,255,0);
+    stroke: var(--color-nofocus);
+    fill: var(--color-rgba-black);
     transition: all 0.3s;
 }
 
 #sidebar ul li:hover .st0{
-    stroke: #fff;
-    fill: rgba(255,255,255,0);
+    stroke: var(--color-focus);
+    fill: var(--color-rgba-black);
 }
 
 #sidebar ul li:hover #games-svg #XMLID_10_,
 #sidebar ul li:hover #games-svg #XMLID_5_,
 #sidebar ul li:hover #games-svg #XMLID_7_{
-    fill: rgba(255,255,255,1);
+    fill: var(--color-focus);
     transition: 0.2s;
 }
 
@@ -78,7 +81,7 @@ body{
 #sidebar ul li:hover #paint-svg #XMLID_8_,
 #sidebar ul li:hover #paint-svg #XMLID_6_,
 #sidebar ul li:hover #paint-svg #XMLID_7_{
-    fill: rgba(255,255,255,1);
+    fill: var(--color-focus);
     transition: 0.2s;
 }
 
@@ -100,7 +103,7 @@ body{
 #sidebar ul li #analyzers-svg #XMLID_30_,
 #sidebar ul li #analyzers-svg #XMLID_37_,
 #sidebar ul li #analyzers-svg #XMLID_33_{
-    stroke: rgba(255,255,255,0);
+    stroke: var(--color-rgba-black);
 }
 
 #sidebar ul li:hover #analyzers-svg #XMLID_4_,
@@ -121,18 +124,31 @@ body{
 #sidebar ul li:hover #analyzers-svg #XMLID_30_,
 #sidebar ul li:hover #analyzers-svg #XMLID_37_,
 #sidebar ul li:hover #analyzers-svg #XMLID_33_{
-    stroke: #fff;
+    stroke: var(--color-focus);
     transition: 0.2s;
 }
 
 #sidebar ul li:hover #analyzers-svg .st0{
-    fill: #fff;
+    fill: var(--color-focus);
 }
 
 #sidebar ul li .active svg .st0{
-    fill: #fff;
-    stroke: #fff;
+    fill: var(--color-focus);
+    stroke: var(--color-focus);
 }
+
+#sidebar ul li:hover #settings-svg circle{
+    stroke: var(--color-focus);
+    transition: 0.2s;
+}
+
+#sidebar ul li .active #settings-svg path, 
+#sidebar ul li .active #settings-svg circle{
+    stroke: var(--color-focus);
+    transition: 0.2s;
+}
+
+
 
 
 

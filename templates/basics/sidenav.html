@@ -1,12 +1,18 @@
 <div id="sidebar" class="color-bar">
-    <span id="slelected-bar-indicator"></span>
-
     <!-- Sidebar -->
-    <div id="sidebar-wrapper">
-        <ul class="sidebar-nav text-center fcolor-nofocus">
-            <li> <a href="#" onclick="moveSideBarSelectorBar(this, 0)">{% include 'svgs/analyzers.svg' %}</a> </li>
-            <li> <a href="#" onclick="moveSideBarSelectorBar(this, 1)">{% include 'svgs/games.svg' %}</a> </li>
-            <li> <a href="#" onclick="moveSideBarSelectorBar(this, 2)">{% include 'svgs/paint.svg' %}</a> </li>
-        </ul>
-    </div> <!-- /#sidebar-wrapper -->
+    <div id="full-sidebar-wrapper">
+        <div id="sidebar-wrapper">
+            <span id="slelected-bar-indicator"></span>
+            <ul class="sidebar-nav text-center fcolor-nofocus">
+                <li> <span onclick="moveSideBarSelectorBar(this, 0, 0)">{% include 'svgs/analyzers.svg' %}</span> </li>
+                <li> <span onclick="moveSideBarSelectorBar(this, 0, 1)">{% include 'svgs/games.svg' %}</span> </li>
+                <li> <span onclick="moveSideBarSelectorBar(this, 0, 2)">{% include 'svgs/paint.svg' %}</span> </li>
+            </ul>
+        </div> <!-- /#sidebar-wrapper -->
+        <div id="lower-sidebar">
+            <ul class="sidebar-nav text-center fcolor-nofocus">
+                <li> <span onclick="moveSideBarSelectorBar(this, 1, 0)">{% include 'svgs/settings.svg' %}</span></li>
+            </ul>
+        </div>
+    </div>
 </div> <!-- /#wrapper -->

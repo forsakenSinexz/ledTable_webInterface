@@ -1,0 +1,83 @@
+<div style="width: 100%;">
+<h1> Bootanimations </h1>
+<p> Bootanimations must be created as
+Tagged Image File Format (.tiff) Sequences. </p>
+<h3> General </h3>
+<p> Folder structure: </p>
+<ul class="folder-structure"> 
+    <li> 
+        Animation_Name/
+        <ul>
+            <li>
+                b0/
+                <ul>
+                    <li>0000.tiff</li>
+                    <li>0001.tiff</li>
+                    <li>...</li>
+                    <li>9999.tiff</li>
+                </ul>
+            </li>
+            <li>
+                b1/
+                <ul>
+                    <li>0000.tiff</li>
+                    <li>0001.tiff</li>
+                    <li>...</li>
+                    <li>9999.tiff</li>
+                </ul>
+            </li>
+            <li>
+                b2/
+                <ul>
+                    <li>0000.tiff</li>
+                    <li>0001.tiff</li>
+                    <li>...</li>
+                    <li>9999.tiff</li>
+                </ul>
+            </li>
+            <li>b.config</li>
+        </ul>
+    </li>
+</ul>
+
+<p>
+    Everything in Animation_Name/b0/ will be executed once first, then the 
+    sequence in Animation_Name/b1/ will be looped until booting is finished. 
+    Finally Animation_Name/b2/ will be executed once to finish the animation. 
+    </br>
+    The following Folder structure is also possible, but then only MODE=2 (see b.config section)
+    will be the execution standart.
+</p>
+<ul class="folder-structure"> 
+    <li> 
+        Animation_Name/ 
+        <ul>
+            <li>
+                b0/
+                <ul>
+                    <li>0000.tiff</li>
+                    <li>0001.tiff</li>
+                    <li>...</li>
+                    <li>9999.tiff</li>
+                </ul>
+            </li>
+            <li>b.config</li>
+        </ul>
+    </li>
+</ul>
+
+<h3> b.config File </h3>
+<p> 
+    As discussed in General, default execution is selected. Alternative
+    executions can be defined in b.config.
+    <ul>
+        <li> <code>MODE = 0</code> - Default execution</li>
+        <li> <code>MODE = 1</code> - b0 then b1 once and then b2 (everything once)</li>
+        <li> <code>MODE = 2</code> - Loop over everything</li>
+    </ul>
+</p>
+
+<h3> Coming soon... </h3>
+
+<p> GIF Support (but will be ugly)</p>
+</div>
