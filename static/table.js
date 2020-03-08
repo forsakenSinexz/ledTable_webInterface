@@ -8,42 +8,81 @@ var dragClickButton = null;
 var isMouseDown;
 
 var sideBarOffset = document.getElementById('sidebar').getBoundingClientRect().top;
-console.log(sideBarOffset);
 var sideBarSelectorBarPos = 0;
 var currentlySelectedSidenavItem = document.getElementsByClassName('sidebar-nav')[0];
+var oldBarPos = 0;
 
 var currentMode = 0;
 
-// sidenav
-$(document).ready(function () {
-  
-  $('#sidebarCollapse').on('click', function () {
-    $('#sidebar').toggleClass('active');
-    if($('#sidebar').hasClass('active')){
-      $('.subsidebar.active').addClass('subactive');
-      $('.subsidebar').addClass('active');
-    }
-    else{
-      $('.subsidebar:not(.subactive)').removeClass('active')
-      $('.subsidebar.subactive').removeClass('subactive');
-    }
-    checkContentPos();
-  });
+
+document.addEventListener('keydown', function(event) {
+  if(event.keyCode == 78) {
+    toggleSidebar();
+  }
 });
 
-function moveSideBarSelectorBar(elem, subnavnumber){
+// sidenav
+$(document).ready(function () {
+  $('#sidebarCollapse').on('click', function() {toggleSidebar()});
+});
+
+function toggleSidebar(){
+  $('#sidebar').toggleClass('active');
+  if($('#sidebar').hasClass('active')){
+    $('.subsidebar.active').addClass('subactive');
+    $('.subsidebar').addClass('active');
+  }
+  else{
+    $('.subsidebar:not(.subactive)').removeClass('active')
+    $('.subsidebar.subactive').removeClass('subactive');
+  }
+  checkContentPos();
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
+async function moveSideBarSelectorBar(elem, barPos, subnavnumber){
+  
   currentlySelectedSidenavItem.classList.remove('active');
   elem.classList.add('active');
   currentlySelectedSidenavItem = elem;
-  animiere(elem.getBoundingClientRect().top);
-  if($('.subsidebar.' + subnavnumber).hasClass('active')){
-    $('.subsidebar.' + subnavnumber).removeClass('active');
+  
+  if($('.subsidebar.' + barPos + "-" + subnavnumber).hasClass('active')){
+    $('.subsidebar.' + barPos + "-" + subnavnumber).removeClass('active');
   }
   else{
-    $('.subsidebar.' + subnavnumber).addClass('active');
+    $('.subsidebar.'+ barPos + "-" + subnavnumber).addClass('active');
   }
-  $('.subsidebar:not(.' + subnavnumber + ')').addClass('active');
+  $('.subsidebar:not(.' + barPos + "-" + subnavnumber + ')').addClass('active');
   checkContentPos();
+  
+  if(barPos ==  0 && oldBarPos != 0){
+    oldBarPos = 0;
+    animiere(160, 500);
+    await sleep(500);
+    $("#sidebar-wrapper").prepend($("#slelected-bar-indicator"));
+    $("#slelected-bar-indicator").css("margin-top: -160px;");
+    sideBarSelectorBarPos = -160;
+    animiere(subnavnumber * 80, 500);
+  }
+  else if(barPos == 0 && oldBarPos == 0){
+    animiere(subnavnumber * 80, 500);
+  }
+  else if (barPos == 1 && oldBarPos != 1){
+    oldBarPos = 1;
+    animiere(-160, 500);
+    await sleep(500);
+    $("#lower-sidebar").prepend($("#slelected-bar-indicator"));
+    $("#slelected-bar-indicator").css("margin-top: 160px;");
+    sideBarSelectorBarPos = 160;
+    animiere(subnavnumber * 80, 500);
+  }
+  else if (barPos == 1 && oldBarPos == 1){
+    animiere(subnavnumber * 80, 500);
+  }
 }
 
 function checkContentPos(){
@@ -55,8 +94,9 @@ function checkContentPos(){
   }
 }
 
-function animiere(toPosY) { 
-  toPosY -= sideBarOffset;
+function animiere(toPosY, myDuration) { 
+  // console.log(toPosY);
+  // toPosY -= sideBarOffset;
   var bar = document.getElementById('slelected-bar-indicator');
   bar.animate(
     [
@@ -66,7 +106,7 @@ function animiere(toPosY) {
         marginTop: toPosY + 'px'
       }
     ], {
-      duration: 500,
+      duration: myDuration,
       iterations: 1,
       fill: 'forwards',
       easing: 'ease'
@@ -283,7 +323,7 @@ function animiere(toPosY) {
   
   
   // Range slider
-
+  
   
   
   

@@ -1,5 +1,19 @@
 body {
   font-family: Tahoma, Geneva, sans-serif;
+  height: 0;
+}
+
+header{
+  position: relative;
+  z-index: 10000;
+}
+
+.inner-body{
+  display: flex;
+}
+
+html{
+  height: 100%;
 }
 
 .printButton {
@@ -16,7 +30,11 @@ section {
   /*!-webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1; */
+<<<<<<< HEAD
   z-index: -1000;
+=======
+  flex-grow: 100;
+>>>>>>> 6cdbd680fcf36216c242970c0dfd9da4f5d7ac5b
   padding: 20px;
 }
 
@@ -30,6 +48,9 @@ section {
 footer {
   padding: 10px;
   text-align: center;
+  background-color: var(--color-sidebar);
+  color: var(--color-nofocus);
+  font-size: 7pt;
 }
 
 .wrap .half {
@@ -128,16 +149,28 @@ footer {
 
 /* sidenavvvvv */
 
+#lower-sidebar{
+  position:sticky;
+  bottom:0;
+  margin-bottom:0px;
+}
 
+#full-sidebar-wrapper{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
 #content{
   widows: 100%;
   transition: margin-left 0.3s;
 }
 
-.wrapper {
-  display: flex;
-  align-items: stretch;
+#wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 30px;
 }
 
 #sidebar {
@@ -146,7 +179,20 @@ footer {
   transition: all 0.3s;
   min-width: 80px;
   max-width: 80px;
-  min-height: 100vh;
+  height: 100vh;
+  height: 100%;
+  position: relative;
+  z-index: 200;
+}
+
+#sidenav-container{
+  position: relative;
+  width: max-content;
+}
+
+#sidebar-wrapper{
+  position: sticky;
+  top:0;
 }
 
 .subsidebar{
@@ -155,14 +201,19 @@ footer {
   transition: all 0.3s;
   min-width: 300px;
   max-width: 300px;
-  min-height: 100vh;
+  height: 100vh;
+  height: 100%;
   position: absolute;
+<<<<<<< HEAD
   /* z-index: -100; */
+=======
+  z-index: 100;
+>>>>>>> 6cdbd680fcf36216c242970c0dfd9da4f5d7ac5b
   margin-left: 80px;
 }
 
 #sidebar.active {
-  margin-left: -80px;
+  margin-left: -80px; 
 }
 
 .subsidebar.active {
@@ -192,6 +243,11 @@ a, a:hover, a:focus {
   color: inherit;
   text-decoration: none;
   transition: all 0.3s;
+}
+
+.subsidebar-wrapper{
+  position: sticky;
+  top:0;
 }
 
 .sidebar-nav{
@@ -247,6 +303,14 @@ a, a:hover, a:focus {
   min-height: 74px;
 }
 
+#sidebar ul li span {
+  cursor: pointer;
+  padding: 5px;
+  font-size: 1.1em;
+  display: block;
+  min-height: 74px;
+}
+
 .subsidebar ul li a {
   padding: 5px;
   font-size: 1.1em;
@@ -261,8 +325,8 @@ a, a:hover, a:focus {
   position: absolute;
   min-width: 2px;
   max-width: 2px;
-  min-height: 74px;
-  max-height: 74px;
+  min-height: 80px;
+  max-height: 80px;
   background-color: white;
   z-index: 500;
   margin-left: 78px;
@@ -272,7 +336,6 @@ a, a:hover, a:focus {
   transition: all 0.3s;
   min-width: 0px;
   max-width: 0px;
-  min-height: 100vh;
   opacity: 0;
   position: relative;
   float:left;
@@ -280,8 +343,9 @@ a, a:hover, a:focus {
 }
 
 #pseudo-sidebar.active{
-  min-width: 300px;
-  max-width: 300px;
+  min-width: 380px;
+  max-width: 380px;
+  max-height: 0px;
 }
 
 
@@ -412,3 +476,30 @@ section h1 {
 
 
 /* End Range Slider */
+
+.folder-structure{
+  background-color: var(--color-bar);
+  width: auto;
+  color:#e4e4e4;
+  font-family: "Times New Roman", Times, serif;
+  list-style: none;
+  font-size: 13.5pt;
+  border-radius: 3px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.folder-structure ul{
+  list-style: none;
+  border-left: 2px solid var(--color-nofocus);
+  padding-left: 20px;
+}
+
+code{
+  color: var(--color-acent-light) !important;
+}
+
+.btn.focus, .btn:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.01 var(--color-acent-light);
+}

@@ -108,6 +108,7 @@ def start_server(ip, debug=False):
     #socketio.run(app, host='127.0.0.1', port=5000, debug=True)
 
 def start_server_with_table(ip: str, table_main_given):
+    import Table_Event
     global table_main
     table_main = table_main_given
     start_server(ip)
