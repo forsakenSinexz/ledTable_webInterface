@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 from flask_socketio import SocketIO
 import random
-import Table_Event
+# import Table_Event
 
 # venv\Scripts\activate
 
@@ -115,7 +115,7 @@ def start_server_with_table(ip: str, table_main_given):
 if __name__ == "__main__":
     global table_main
     table_main = None
-    #start_server('127.0.0.1', debug=True)
-    start_server('192.168.178.30', debug=True)
+    start_server('127.0.0.1', debug=True)
+    # start_server('192.168.178.30', debug=True)
     #app.run(debug=True,host='127.0.0.1', port=8080)
 
