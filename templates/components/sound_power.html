@@ -1,23 +1,14 @@
-<div class="row">
-    <div class="col-2">
-        Sound volume power |
-    </div>
-    <div class="col-1">
-        <span id="volume_value">7</span>
-    </div>
-    <div class="col-9">
-        <input id="volume_range" type="range" />
-    </div>
+<!-- Use the following line to register your component. A js function named that way will be executed at load (see components.js)
+    in this example the function in components.js must be named sound_power(activate){}. multiple functions can be added, comma separated.
+    example: # sound_power, another_function, another
+ -->
++[sound_power]+
+<div class="col-2">
+    Sound volume power |
 </div>
-
-<script>
-    var slider = document.getElementById("volume_range");
-    var output = document.getElementById("volume_value");
-    output.innerHTML = slider.value; // Display the default slider value
-    
-    // Update the current slider value (each time you drag the slider handle)
-    slider.oninput = function() {
-        output.innerHTML = this.value;
-        socket.emit('analyzer_volume_change', {value: this.value});
-    } 
-</script>
+<div class="col-1">
+    <span id="volume_value">7</span>
+</div>
+<div class="col-9">
+    <input id="volume_range" type="range" />
+</div>

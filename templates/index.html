@@ -8,6 +8,9 @@
     <title>LED Table</title>
     <script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
     <script src="{{ url_for('static', filename='iro.min.js') }}"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='socketio.js') }}"></script>
+    <script src="{{ url_for('static', filename='components.js') }}"></script>
 </head>
 <body class="fcolor-focus">
     <header>
@@ -19,16 +22,11 @@
             {% include "basics/subsidenav.html" %}
         </div>
         <div id="wrapper">
+            <div id="wrapper-loading"></div>
             <div id="content">
-                <div class="container-fluid">
+                <div id="final_content_container" class="container-fluid">
                     <!--  include "contentContainer.html" %}  ADD {} and %%!!--> 
-                    {% include "components/sound_power.html" %}
-                    <div class="row">
-                        {% include "components/colour_picker.html" %}
-                    </div>
-                    <div class="row">
-                            {% include "components/boot_info.html" %}
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -37,7 +35,6 @@
     <!-- <footer>
          include "basics/footer.html" %}
     </footer> -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename='table.js') }}"></script>
 </body>
 </html>

@@ -15,6 +15,10 @@ var oldBarPos = 0;
 var currentMode = 0;
 
 
+
+
+
+
 document.addEventListener('keydown', function(event) {
   if(event.keyCode == 78) {
     toggleSidebar();
@@ -58,30 +62,14 @@ async function moveSideBarSelectorBar(elem, barPos, subnavnumber){
   }
   $('.subsidebar:not(.' + barPos + "-" + subnavnumber + ')').addClass('active');
   checkContentPos();
-  
-  if(barPos ==  0 && oldBarPos != 0){
-    oldBarPos = 0;
-    animiere(160, 500);
-    await sleep(500);
-    $("#sidebar-wrapper").prepend($("#slelected-bar-indicator"));
-    $("#slelected-bar-indicator").css("margin-top: -160px;");
-    sideBarSelectorBarPos = -160;
+  if(barPos == 0){
+    var bar = document.getElementById('slelected-bar-indicator').classList.add('active');
+    var bar = document.getElementById('settings-bar-indicator').classList.remove('active');
     animiere(subnavnumber * 80, 500);
   }
-  else if(barPos == 0 && oldBarPos == 0){
-    animiere(subnavnumber * 80, 500);
-  }
-  else if (barPos == 1 && oldBarPos != 1){
-    oldBarPos = 1;
-    animiere(-160, 500);
-    await sleep(500);
-    $("#lower-sidebar").prepend($("#slelected-bar-indicator"));
-    $("#slelected-bar-indicator").css("margin-top: 160px;");
-    sideBarSelectorBarPos = 160;
-    animiere(subnavnumber * 80, 500);
-  }
-  else if (barPos == 1 && oldBarPos == 1){
-    animiere(subnavnumber * 80, 500);
+  else{
+    var bar = document.getElementById('slelected-bar-indicator').classList.remove('active');
+    var bar = document.getElementById('settings-bar-indicator').classList.add('active');
   }
 }
 
@@ -114,11 +102,6 @@ function animiere(toPosY, myDuration) {
     sideBarSelectorBarPos = toPosY;
   }
   
-  
-  var socket = io();
-  socket.on('connect', function() {
-    socket.emit('testmessage', {data: 'I\'m connected!'});
-  });
   
   $('#mode-collapsible').on('show.bs.collapse', function () {
     $('#nav-mode-btn').addClass('nav-button-collapsed');
@@ -317,9 +300,11 @@ function animiere(toPosY, myDuration) {
     $("html").get(0).style.cursor = 'default';
   }
   
-  function mode_switch(mode){
-    socket.emit('mode_switch_event', {mode: mode})
-  }
+  
+  
+  
+  
+  
   
   
   // Range slider

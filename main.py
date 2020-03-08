@@ -29,16 +29,26 @@ def modi_page(mode_name="AndyAnalyzer"):
 def analyzer_page(mode_name='andy'):
     return render_template('analyzers/{}.html'.format(mode_name))
 
+
+##################################################################################
+###########################  SOCKET IO STUFF  ####################################
+##################################################################################
+##################################################################################
+
+#TODO: Table anbindung!!
+
 @socketio.on('analyzer_volume_change')
-def change_analyzer_volume(message):
+def change_analyzer_volume(value):
     #Event.analyzer_percentage_queue.put(message['value'])
-    Table_Event.analyzer_event(Table_Event.Analyzer_Event(0, message['value']))
-    socketio.emit('analyzer_volume_update', {'value': message['value']}, broadcast=True)
+    # Table_Event.analyzer_event(Table_Event.Analyzer_Event(0, value)) #TODO: UNCOMMENT WHEN IN TABLE MODE!!!
+    print("Analyzer volume change to {}".format(value))
+    socketio.emit('analyzer_volume_update', value, broadcast=True, include_self=False)
 
 @socketio.on('request_analyzer_volume')
 def answer_analyzer_volume_request():
-    #TODO request from table
-    socketio.emit('analyzer_volume_update', {'value': 25})
+    #TODO: request from table
+    print('got analyzer volume request')
+    socketio.emit('analyzer_volume_update', 25)
 
 @socketio.on('pixel_colored_event')
 def handle_pixel_colored(message):
@@ -69,9 +79,8 @@ def handle_array_clear(message):
 
 
 @socketio.on('mode_switch_event')
-def handle_mode_switch(message):
+def handle_mode_switch(mode):
     global table_main
-    mode = message['mode']
     print('Mode switched to {}.'.format(mode))
     if(table_main is None):
         return
@@ -87,6 +96,16 @@ def tmp_test_show_reciever(message):
     tmp_show(random_list)
 
 
+@socketio.on('load_sub_page')
+def load_sub_page(page_name): # page_name : str
+    socketio.emit('sub_page', get_sub_page(page_name))
+    
+
+def get_sub_page(page_name):
+    print('new page {}'.format(page_name))
+    return render_template('subPages/{}.html'.format(page_name))
+
+
 #TODO: Take over to table python scripts
 def tmp_show(colorarray):
     '''
@@ -99,9 +118,13 @@ def tmp_show(colorarray):
 
 @socketio.on('testmessage')
 def handle_testmessage(stringMessage):
-    pass
-    #print(stringMessage)
     print(stringMessage['data'])
+
+
+##################################################################################
+##################################################################################
+##################################################################################
+
 
 def start_server(ip, debug=False):
     socketio.run(app, host=ip, port=5000, debug=debug)
