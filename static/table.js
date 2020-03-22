@@ -172,42 +172,42 @@ function animiere(toPosY, myDuration) {
   }
   
   
-  var colorPickerLeft = new iro.ColorPicker(".colorPickerLeftClick", {
-    width: 200,
-    color: "rgb(255, 255, 255)",
-    borderWidth: 2,
-    borderColor: "#FFFFFF"
-  });
+  // var colorPickerLeft = new iro.ColorPicker(".colorPickerLeftClick", {
+  //   width: 200,
+  //   color: "rgb(255, 255, 255)",
+  //   borderWidth: 2,
+  //   borderColor: "#FFFFFF"
+  // });
   
-  var colorPickerRight = new iro.ColorPicker(".colorPickerRightClick", {
-    width: 200,
-    color: "rgb(255, 255, 255)",
-    borderWidth: 2,
-    borderColor: "#FFFFFF"
-  });
+  // var colorPickerRight = new iro.ColorPicker(".colorPickerRightClick", {
+  //   width: 200,
+  //   color: "rgb(255, 255, 255)",
+  //   borderWidth: 2,
+  //   borderColor: "#FFFFFF"
+  // });
   
-  var valuesLeft = document.getElementById("valuesLeft");
-  var valuesRight = document.getElementById("valuesRight");
+  // var valuesLeft = document.getElementById("valuesLeft");
+  // var valuesRight = document.getElementById("valuesRight");
   
-  colorPickerLeft.on(["color:init", "color:change"],
-  function(color){
-    pickedRGBWColorLeft = rgb_to_rgbw(color.rgb);
-    pickedRGBColorLeft = new Array(color.rgb.r, color.rgb.g, color.rgb.b);
-    valuesLeft.innerHTML = [
-      "rgbw: (" + pickedRGBWColorLeft[0] + "," + pickedRGBWColorLeft[1] + "," + pickedRGBWColorLeft[2] + "," + pickedRGBWColorLeft[3] + ")",
-      "rgb: (" + pickedRGBColorLeft[0] + "," + pickedRGBColorLeft[1] + "," + pickedRGBColorLeft[2] + ")"
-    ].join("<br>");
-  });
+  // colorPickerLeft.on(["color:init", "color:change"],
+  // function(color){
+  //   pickedRGBWColorLeft = rgb_to_rgbw(color.rgb);
+  //   pickedRGBColorLeft = new Array(color.rgb.r, color.rgb.g, color.rgb.b);
+  //   valuesLeft.innerHTML = [
+  //     "rgbw: (" + pickedRGBWColorLeft[0] + "," + pickedRGBWColorLeft[1] + "," + pickedRGBWColorLeft[2] + "," + pickedRGBWColorLeft[3] + ")",
+  //     "rgb: (" + pickedRGBColorLeft[0] + "," + pickedRGBColorLeft[1] + "," + pickedRGBColorLeft[2] + ")"
+  //   ].join("<br>");
+  // });
   
-  colorPickerRight.on(["color:init", "color:change"],
-  function(color){
-    pickedRGBWColorRight = rgb_to_rgbw(color.rgb);
-    pickedRGBColorRight = new Array(color.rgb.r, color.rgb.g, color.rgb.b);
-    valuesRight.innerHTML = [
-      "rgbw: (" + pickedRGBWColorRight[0] + "," + pickedRGBWColorRight[1] + "," + pickedRGBWColorRight[2] + "," + pickedRGBWColorRight[3] + ")",
-      "rgb: (" + pickedRGBColorRight[0] + "," + pickedRGBColorRight[1] + "," + pickedRGBColorRight[2] + ")"
-    ].join("<br>");
-  });
+  // colorPickerRight.on(["color:init", "color:change"],
+  // function(color){
+  //   pickedRGBWColorRight = rgb_to_rgbw(color.rgb);
+  //   pickedRGBColorRight = new Array(color.rgb.r, color.rgb.g, color.rgb.b);
+  //   valuesRight.innerHTML = [
+  //     "rgbw: (" + pickedRGBWColorRight[0] + "," + pickedRGBWColorRight[1] + "," + pickedRGBWColorRight[2] + "," + pickedRGBWColorRight[3] + ")",
+  //     "rgb: (" + pickedRGBColorRight[0] + "," + pickedRGBColorRight[1] + "," + pickedRGBColorRight[2] + ")"
+  //   ].join("<br>");
+  // });
   
   function rgb_to_rgbw(color){
     var min = 0;

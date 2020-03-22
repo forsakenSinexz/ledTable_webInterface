@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-2">
+        <div id="colorManagerModes" class="btn-group-vertical" role="group" aria-label="Button group">
+            <button type="button" class="btn btn-secondary">mode 0</button>
+            <button type="button" class="btn btn-secondary">mode 1</button>
+        </div>
+    </div>
+    <div class="col-10">
+        <div class="row">
+            <div class="color-elem">
+                <p class="color-elem-title">Colour</p>
+                {% include "components/colour_picker.html" %}
+            </div>
+            <div class="color-elem">
+                <p class="color-elem-title">Fading speed</p>
+                <div class="verticalRange">
+                    <input type="range" orient="vertical" />
+                    <p class="rangeValue">50</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="color-elem">
+                <p class="color-elem-title">Colour</p>
+            </div>
+            <div class="color-elem">
+                <p class="color-elem-title">Fading speed</p>
+                <div class="verticalRange">
+                    <input type="range" orient="vertical" />
+                    <p class="rangeValue">50</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

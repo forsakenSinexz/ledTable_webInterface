@@ -1,0 +1,51 @@
+{% import 'components/colour_picker.html' as colour_picker %}
+<div class="row" id="color-row">
+    <div class="col-2">
+        <div id="colorManagerModes" class="btn-group-vertical" role="group" aria-label="Button group">
+            {% for mode_object in mode_objects %}
+            <button onclick="change_color_mode('{{ mode_object.mode }}')" type="button" class="btn btn-secondary">{{ mode_object.mode }}</button>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="col-10" id="color-objects-col">
+        {% for mode_object in mode_objects %}
+        {% if mode_object.mode == mode%}
+        <div class="row" id="{{ mode_object.mode }}-row">
+        {% else %}
+        <div class="row" id="{{ mode_object.mode }}-row" style="display: none;" >
+        {% endif %}
+            {% for i in mode_object.colors_list %}
+            <!-- <p>{{ loop.index0 }}</p> -->
+            <div class="row" style="width: 100%;">
+                <div class="color-elem">
+                    <p class="color-elem-title">Colour</p>
+                    {{ colour_picker.create_color_picker(mode_object.mode, loop.index0) }}
+                </div>
+                <div class="color-elem">
+                    <p class="color-elem-title">Fading speed</p>
+                    <div class="verticalRange" id = "{{ '%s-fade-speed-range'|format(color_mode_name) }}">
+                        <input type="range" orient="vertical" />
+                        <p class="rangeValue">50</p>
+                    </div>
+                </div>
+                <div class="color-elem">
+                    <p class="color-elem-title">Mode</p>
+                    <div id="colorManagerModes" class="btn-group-vertical" role="group" aria-label="Button group">
+                        <button onclick="change_color_submode('{{ loop.index0 }}', 0)" type="button" class="btn btn-secondary">Constant</button>
+                        <button onclick="change_color_submode('{{ loop.index0 }}', 1)" type="button" class="btn btn-secondary">Fading</button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+
+<script>
+    socket.on('update_color_component', function(cmode_name){
+        $('#color-objects-col').children().css({'display' : 'none'});
+        $('#' + cmode_name + '-row').css({'display' : 'flex'});
+    });
+</script>
