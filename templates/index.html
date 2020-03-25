@@ -1,16 +1,17 @@
 <!doctype html>
 <html>
 <head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='colors.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/colors.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>LED Table</title>
-    <script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='iro.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/iro.min.js') }}"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
-    <script src="{{ url_for('static', filename='socketio.js') }}"></script>
-    <script src="{{ url_for('static', filename='components.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/socketio.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/components.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
 </head>
 <body class="fcolor-focus">
     <header>
@@ -24,9 +25,7 @@
         <div id="wrapper">
             <div id="wrapper-loading"></div>
             <div id="content">
-                <div id="final_content_container" class="container-fluid">
-                    <!--  include "contentContainer.html" %}  ADD {} and %%!!--> 
-                </div>
+                <div id="final_content_container" class="container-fluid"></div>
             </div>
         </div>
         
@@ -34,6 +33,6 @@
     <!-- <footer>
          include "basics/footer.html" %}
     </footer> -->
-    <script src="{{ url_for('static', filename='table.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/table.js') }}"></script>
 </body>
 </html>

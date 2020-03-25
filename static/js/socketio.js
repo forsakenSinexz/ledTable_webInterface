@@ -9,17 +9,19 @@ var isSocketReady = false;
 
 
 socket.on('sub_page', function(page, page_name){
-    var toActivate = []
-    while(page.includes("+[") && page.includes("]+")){
-        var posL = page.indexOf("+[");
-        var posR = page.indexOf("]+");
-        toActivate.push(page.substring(posL + 2, posR));
-        page = page.substr(0, posL) + page.substr(posR + 2, page.length);
-    }
-    document.getElementById('final_content_container').innerHTML = page;
-    toActivate.forEach(function(f,i){
-        window[f](true);
-    })
+    // var toActivate = []
+    // while(page.includes("+[") && page.includes("]+")){
+    //     var posL = page.indexOf("+[");
+    //     var posR = page.indexOf("]+");
+    //     toActivate.push(page.substring(posL + 2, posR));
+    //     page = page.substr(0, posL) + page.substr(posR + 2, page.length);
+    // }
+    $('#final_content_container').html("");
+    $('#final_content_container').append($.parseHTML(page, document, true));
+    // document.getElementById('final_content_container').innerHTML = page;
+    // toActivate.forEach(function(f,i){
+    //     window[f](true);
+    // })
     // window.history.pushState("object or string", "Title", page_name);
     document.getElementById('wrapper-loading').classList.remove("active");
     document.getElementById('wrapper-loading').innerHTML = "";

@@ -4,7 +4,12 @@
     <div class="colorPicker" id="{{ name }}-{{ sub_id }}-picker"></div>
   </div>
   <div class="half readout">
-    <div class="pickerValues" id="{{ name }}-{{ sub_id }}-pickerValues"></div>
+    <div class="pickerValues" id="{{ name }}-{{ sub_id }}-pickerValues">
+      R: 0, 255 <br>
+      G: 0, 255 <br>
+      B: 0, 255 <br>
+      W: 255
+    </div>
   </div>
 </div>
 <script type="text/javascript">
@@ -30,14 +35,13 @@
       },
       ]
     });
+    // "color:init"
     var colorPickerValues = document.getElementById("{{ name }}-{{ sub_id }}-pickerValues");
-    colourPicker.on(["color:change"],
+    colourPicker.on(["color:change"], 
     function(color){
       var pickedRGBWColor = rgb_to_rgbw(color.rgb);
       var pickedRGBColor = new Array(color.rgb.r, color.rgb.g, color.rgb.b);
       colorPickerValues.innerHTML = [
-      // "RGBW - (" + pickedRGBWColor[0] + ", " + pickedRGBWColor[1] + ", " + pickedRGBWColor[2] + ", " + pickedRGBWColor[3] + ")",
-      // "RGB  - (" + pickedRGBColor[0] + ", " + pickedRGBColor[1] + ", " + pickedRGBColor[2] + ")"
       "R: " + pickedRGBWColor[0] + ", " + pickedRGBColor[0],
       "G: " + pickedRGBWColor[1] + ", " + pickedRGBColor[1],
       "B: " + pickedRGBWColor[2] + ", " + pickedRGBColor[2],

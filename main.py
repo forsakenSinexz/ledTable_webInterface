@@ -3,14 +3,14 @@ from flask_socketio import SocketIO
 import random
 import config
 import TableData
-from TableData import table_mode_manager as tmm 
+# from TableData import table_mode_manager as TableData.table_mode_manager 
 
 
 # venv\Scripts\activate
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secreto!'
-socketio = SocketIO(app, logger=True, engineio_logger=True)
+socketio = SocketIO(app, logger=False, engineio_logger=False)
 
 
 @app.route('/')
@@ -24,7 +24,11 @@ def hello_world():
 
 @socketio.on('connect')
 def connect():
-    socketio.emit('sub_page', (get_sub_page(TableData.mode), TableData.mode), broadcast=False)
+    cm = TableData.table_mode_manager.get_current_mode()
+    if cm.name == TableData.table_mode_manager.sleep_mode_name:
+        socketio.emit('sub_page', (render_template('basics/welcome.html'), 'index'), broadcast=False)
+    else:
+        socketio.emit('sub_page', (get_sub_page(cm.name), cm.name), broadcast=False)
 
 @socketio.on('analyzer_volume_change')
 def change_analyzer_volume(value):
@@ -82,7 +86,7 @@ def color_fade_speed_change(speed_message):
 @socketio.on('mode_switch_event')
 def handle_mode_switch(mode):
     print('Mode switched to {}.'.format(mode))
-    tmm.change_mode(mode)
+    TableData.table_mode_manager.change_mode(mode)
 
 
 @socketio.on('colorarray_show_event')
@@ -110,10 +114,13 @@ def load_color_component(color_manager):
     if has_app_context():
         socketio.emit(
             'component_load',
-            render_template(
-                'components/color_object.html',
-                mode = color_manager.mode,
-                mode_objects = color_manager.color_objects,
+            (
+                render_template(
+                    'components/color_object.html',
+                    mode = color_manager.mode,
+                    mode_objects = color_manager.color_objects,
+                ),
+                'color_objects'
             ),
             broadcast = True)
     print("got color manager call for {}".format(color_manager))
@@ -123,7 +130,7 @@ def update_color_component(cmode):
 
 @socketio.on('color_submode_change')
 def color_submode_change(mode_dict):
-    tmm.get_color_manager().change_submode(
+    TableData.table_mode_manager.get_color_manager().change_submode(
         mode_dict['co'], mode_dict['m']
     )
 
